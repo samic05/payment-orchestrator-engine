@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.samic.financial.payment.orchestrator.engine.application.service.PaymentServiceTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-02-18T03:00:26.568Z" hostname="Santiagos-MacBook-Pro.local" time="0.551">
+  <properties/>
+  <testcase name="execute: rejected payment returns Rejected status" classname="dev.samic.financial.payment.orchestrator.engine.application.service.PaymentServiceTest" time="0.533"/>
+  <testcase name="findById: delegates to repository" classname="dev.samic.financial.payment.orchestrator.engine.application.service.PaymentServiceTest" time="0.002"/>
+  <testcase name="execute: approved payment saves twice (pending + approved)" classname="dev.samic.financial.payment.orchestrator.engine.application.service.PaymentServiceTest" time="0.007"/>
+  <testcase name="execute: invalid payment method throws exception" classname="dev.samic.financial.payment.orchestrator.engine.application.service.PaymentServiceTest" time="0.002"/>
+  <testcase name="execute: fraud alert payment returns FraudAlert status" classname="dev.samic.financial.payment.orchestrator.engine.application.service.PaymentServiceTest" time="0.003"/>
+  <testcase name="findById: returns empty when not found" classname="dev.samic.financial.payment.orchestrator.engine.application.service.PaymentServiceTest" time="0.001"/>
+  <system-out><![CDATA[22:00:27.087 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Processing payment: currency=EUR, amount=2000.00, method=BANK_TRANSFER
+22:00:27.092 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Payment created: id=7f9c47a5-6ee8-4084-8b76-91b9bf917d80
+22:00:27.093 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Gateway response for 7f9c47a5-6ee8-4084-8b76-91b9bf917d80: Rejected[reason=Limit exceeded]
+22:00:27.099 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Payment processed: Payment 7f9c47a5-6ee8-4084-8b76-91b9bf917d80 rejected: Limit exceeded
+22:00:27.106 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Processing payment: currency=USD, amount=50.00, method=CREDIT_CARD
+22:00:27.106 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Payment created: id=da945e6e-135a-4a2c-8bc3-6f6a085d70bc
+22:00:27.106 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Gateway response for da945e6e-135a-4a2c-8bc3-6f6a085d70bc: Approved[authorizationCode=AUTH-999, approvedAt=2026-02-17T22:00:27.106034]
+22:00:27.109 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Payment processed: Payment da945e6e-135a-4a2c-8bc3-6f6a085d70bc approved with code AUTH-999
+22:00:27.113 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Processing payment: currency=USD, amount=10.00, method=BITCOIN
+22:00:27.116 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Processing payment: currency=USD, amount=9999.99, method=DIGITAL_WALLET
+22:00:27.116 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Payment created: id=9a17f48f-8038-4408-a042-b9c92c68ca2b
+22:00:27.116 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Gateway response for 9a17f48f-8038-4408-a042-b9c92c68ca2b: FraudAlert[riskScore=92]
+22:00:27.117 [Test worker] INFO dev.samic.financial.payment.orchestrator.engine.application.service.PaymentService -- Payment processed: Payment 9a17f48f-8038-4408-a042-b9c92c68ca2b flagged for fraud (risk: 92)
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/samic05/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.18.4/7ef8cd821c4a69426fa7c99a6070b8b1b02e3abf/byte-buddy-agent-1.18.4.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
