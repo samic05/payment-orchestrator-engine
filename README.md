@@ -95,7 +95,7 @@ The system includes a `StubPaymentGateway` to simulate different provider respon
   "paymentMethodType": "CREDIT_CARD",
   "methodDetails": { "bin": "457173" }
 }
-
+```
 ## ✒️ Author
 
 Santiago Galvis (Samic05)
