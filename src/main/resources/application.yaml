@@ -1,21 +1,24 @@
 spring:
   application:
     name: payment-orchestrator-engine
+  
   threads:
     virtual:
       enabled: true
 
   mongodb:
-    host: localhost
-    port: 27017
-    username: root
-    password: root_pass
-    database: payment-engine
-    authentication-database: admin
+    host: ${SPRING_MONGODB_HOST:localhost}
+    port: ${SPRING_MONGODB_PORT:27017}
+    username: ${SPRING_MONGODB_USERNAME:root}
+    password: ${SPRING_MONGODB_PASSWORD:root_pass}
+    database: ${SPRING_MONGODB_DATABASE:payment-engine}
+    authentication-database: ${SPRING_MONGODB_AUTH_DB:admin}
 
   rabbitmq:
-    host: localhost
-    port: 5672
+    host: ${SPRING_RABBITMQ_HOST:localhost}
+    port: ${SPRING_RABBITMQ_PORT:5672}
+    username: ${SPRING_RABBITMQ_USERNAME:admin}
+    password: ${SPRING_RABBITMQ_PASSWORD:admin_pass}
     listener:
       simple:
-        auto-startup: false
+        auto-startup: ${RABBITMQ_AUTO_STARTUP:true}

@@ -1,4 +1,24 @@
 services:
+  payment-engine:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    pull_policy: build
+    container_name: payment-orchestrator-engine
+    environment:
+      - SPRING_MONGODB_USERNAME=${DB_USER}
+      - SPRING_MONGODB_PASSWORD=${DB_PASS}
+      - SPRING_MONGODB_DATABASE=${DB_NAME}
+      - SPRING_MONGODB_HOST=mongodb-local
+      - SPRING_RABBITMQ_USERNAME=${RABBIT_USER}
+      - SPRING_RABBITMQ_PASSWORD=${RABBIT_PASS}
+      - SPRING_RABBITMQ_HOST=rabbitmq-local
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+      - rabbitmq
+
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq-local
@@ -6,8 +26,8 @@ services:
       - "5672:5672"
       - "15672:15672"
     environment:
-      - RABBITMQ_DEFAULT_USER=admin
-      - RABBITMQ_DEFAULT_PASS=admin_pass
+      - RABBITMQ_DEFAULT_USER=${RABBIT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBIT_PASS}
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
 
@@ -17,8 +37,8 @@ services:
     ports:
       - "27017:27017"
     environment:
-      - MONGODB_INITDB_ROOT_USERNAME=root
-      - MONGODB_INITDB_ROOT_PASSWORD=root_pass
+      - MONGODB_INITDB_ROOT_USERNAME=${DB_USER}
+      - MONGODB_INITDB_ROOT_PASSWORD=${DB_PASS}
     volumes:
       - mongo_data:/data/db
 
