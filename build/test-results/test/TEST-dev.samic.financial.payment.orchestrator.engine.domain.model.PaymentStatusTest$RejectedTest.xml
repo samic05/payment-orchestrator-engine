@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Rejected" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-02-18T03:00:27.120Z" hostname="Santiagos-MacBook-Pro.local" time="0.001">
-  <properties/>
-  <testcase name="rejects null reason" classname="dev.samic.financial.payment.orchestrator.engine.domain.model.PaymentStatusTest$RejectedTest" time="0.001"/>
-  <testcase name="stores rejection reason" classname="dev.samic.financial.payment.orchestrator.engine.domain.model.PaymentStatusTest$RejectedTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
